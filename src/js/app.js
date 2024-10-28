@@ -1,6 +1,17 @@
-// TODO: write your code here
-import sum from './basic';
+export default function formatPhoneNumber(phone) {
+    const digits = phone.replace(/\D/g, '');
 
-console.log('worked');
+    if (digits.length === 11 && digits[0] === '8') {
+        return `+7${digits.slice(1)}`;
+    }
 
-console.log(sum([1, 2]));
+    if (digits.length === 11 && digits[0] === '7') {
+        return `+${digits}`;
+    }
+
+    if (phone.startsWith('+')) {
+        return `+${digits}`;
+    }
+
+    return `+${digits}`
+}
